@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+
+
+
+
+<Plantilla>
+
+		<seccion name="Parte1">
+			
+			<seccion name="Datos Generales" >
+				<elemento name="Nombre Código">Nombre Código</elemento>
+				<elemento name="Tipo Curso">Tipo Curso</elemento>
+				<elemento name="Efectivo">Efectivo</elemento>
+			</seccion>
+			<elemento name="Descripcion">Descripción General</elemento>
+			<elemento name="Objetivos">Objetivos Genereales</elemento>
+			<elemento name="Contenido">Contenido</elemento>
+		</seccion>
+		
+		<seccion name="Parte2">
+			<elemento name="Metodología">Metodología</elemento>
+			<elemento name="Evaluacion">Evaluación</elemento>
+			<elemento name="Bibliografía">Bibliografía</elemento>
+			<elemento name="Datos del Profesor">Datos del Profesor</elemento>
+		</seccion>
+	
+</Plantilla>
