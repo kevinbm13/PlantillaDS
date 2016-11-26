@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>PlantillaDS</display-name>
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+    <welcome-file>login.htm</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>agregarSeccionServlet</servlet-name>
+    <servlet-class>servlets.agregarSeccionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>agregarSeccionServlet</servlet-name>
+    <url-pattern>/agregarSeccionServlet/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>pruebaServlet</servlet-name>
+    <servlet-class>servlets.pruebaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pruebaServlet</servlet-name>
+    <url-pattern>/pruebaServlet/*</url-pattern>
+  </servlet-mapping>
+</web-app>

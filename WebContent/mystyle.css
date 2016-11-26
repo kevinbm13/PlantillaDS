@@ -1,0 +1,156 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #e2e2e2;
+    position: absolute;
+    height: 150%;
+    overflow: auto;
+    font-size: 16px;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    
+}
+
+
+li a span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.2s;
+}
+
+li a span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -13px;
+  transition: 0.0s;
+}
+
+li a:hover span {
+  padding-right: 25px;
+}
+
+li a:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+li a:hover{
+    background-color: #02003a;
+    color: white;
+}
+button.accordion {
+    background-color: #e2e2e2;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 18px;
+    transition: 0.4s;
+    margin-bottom:0px;
+    border-radius: 4px;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #02003a;
+    color: white;
+}
+
+button.accordion:after {
+    content: '\02795';
+    font-size: 18px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796";
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    opacity: 0;
+    border: 2px solid #ccc;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 1500px;
+    margin-bottom:15px;
+    margin-top:0px;
+}
+input[type=text], input[type=password], select {
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+input[type=text]:focus {
+    border: 2px solid #4a8bc4;
+}
+select:focus {
+    border: 2px solid #4a8bc4;
+}
+select{
+    cursor: pointer;
+}
+input[type=submit] {
+    width: 60%;
+    background-color: #3f6c93;
+    color: white;
+    padding: 14px 20px;
+    margin: 0px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    margin-left: 20%;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom:10px;
+}
+
+input[type=submit]:hover {
+    background-color: #3f6c93;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    resize: none;
+}
+label {
+    padding: 16px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 18px;
+}
