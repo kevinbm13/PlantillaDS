@@ -12,27 +12,19 @@ import org.jdom2.Document;         // |
 import org.jdom2.Element;          // |\ Librerías
 import org.jdom2.JDOMException;    // |/ JDOM
 import org.jdom2.input.SAXBuilder;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 public class LectorXml {
 	
 	public Documento leer(Documento documento){
 		 SAXBuilder builder = new SAXBuilder();
-		    File xmlFile = new File( "C:\\Users\\gollo\\Desktop\\plantilla.xml" );
+		    File xmlFile = new File( "C:\\Users\\gollo\\Desktop\\Juan.xml" );
 		    try
 		    {
 		        //Se crea el documento a traves del archivo
 		        Document document = (Document) builder.build( xmlFile );
 		        Element rootNode = document.getRootElement();//Plantilla
 		      
-		        crearEstructura(rootNode,documento);
-		      
-		        documento.incluir();
-		       
-		        
-		        
-		           
+		        crearEstructura(rootNode,documento);        
 		        
 		    }catch ( IOException io ) {
 		        System.out.println( io.getMessage() );
@@ -41,6 +33,7 @@ public class LectorXml {
 		    }
 		    return documento; 
 	}
+//--------------------------------------------------------------------------------------------------------
 	
 	public void crearEstructura(Element nodo,Documento documento){
 		List<Element> nodosHijos= nodo.getChildren();
@@ -50,6 +43,7 @@ public class LectorXml {
             Element nodoHijo = (Element) nodosHijos.get(i);//Se obtiene el elemento
             List<Element> nodosHijosSecundarios=nodoHijo.getChildren();
             if(nodosHijosSecundarios.size()==0){
+            	
             	Documento d = new Elemento(nodoHijo.getAttributeValue("id"));
             	documento.add(d);
             
@@ -67,17 +61,20 @@ public class LectorXml {
 		
 	}
 	
-public void obtenerNodos(String id) throws SAXException, IOException, ParserConfigurationException{
-	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder builder = factory.newDocumentBuilder();
-	Document doc = (Document) builder.parse(new File("ruta//al//archivo.xml"));
+//------------------------------------------------------------------------------------------------------------
+public org.w3c.dom.Document crearArchivo() throws ParserConfigurationException {
+	  
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+	 
+			// elemento raiz
+			org.w3c.dom.Document doc = docBuilder.newDocument();
+			return doc;
 
-	// 2. buscar y eliminar el elemento <enfermera id="3"> de entre 
-//	    muchos elementos <enfermera> ubicados en cualquier posicion del documento
-	NodeList items = ((org.w3c.dom.Document) doc).getElementsByTagName("enfermera");
-
-	}
 
 }
 
+//-------------------------------------------------------------------------------------------------------
+
+}
 

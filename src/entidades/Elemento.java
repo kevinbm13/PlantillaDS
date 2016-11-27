@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Elemento extends Documento {
 	private String id;
-	
+	private String contenido;
 	public Elemento(String id){
 	
 		this.id=id;
@@ -22,10 +22,16 @@ public void obtenerElemento(String idElemento){
 }
 
 	@Override
-	public void incluir() {
+	public void incluir(List<String>texto) {
 		//Guardar en base
-		System.out.println(id);
-	}
+			
+			System.out.println(texto.get(0));
+			contenido=texto.get(0);
+			texto.remove(0);
+			
+		}
+		
+	
 
 	@Override
 	public String getId() {
@@ -52,11 +58,25 @@ public void obtenerElemento(String idElemento){
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void add(Documento d) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public Documento Clonar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String getContenido() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

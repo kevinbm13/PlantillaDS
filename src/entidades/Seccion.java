@@ -7,7 +7,7 @@ public class Seccion extends Documento {
 private List<Documento> listaSeccion;
 private String id;
 
-
+private String contenido=null;
 
 	 public String getId() {
 	return id;
@@ -73,15 +73,33 @@ public void getChild(String id){
 	
 	@Override
 	//ModificarContenido
-	public void incluir() {
-		System.out.println(id);
+	public void incluir(List<String> texto) {
+
 	
 		for (Documento seccion : listaSeccion) {
 			
-			seccion.incluir();
+			seccion.incluir(texto);
+			
 			
 		}
 		}
+	
+
+	
+
+	@Override
+	public Documento Clonar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getContenido() {
+		return contenido;
+	}
+
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
+	}
 
 	
 	
