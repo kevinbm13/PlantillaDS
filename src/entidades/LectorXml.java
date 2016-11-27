@@ -1,4 +1,4 @@
-package entidad;
+package entidades;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,14 +6,14 @@ import java.util.List;
 
 import org.jdom2.Document;         // |
 import org.jdom2.Element;          // |\ Librerías
-import org.jdom2.JDOMException;    // |/ JDOM
+import org.jdom2.JDOMException;		// |/ JDOM
 import org.jdom2.input.SAXBuilder;
 
 public class LectorXml {
 	
 	public Documento leer(Documento documento){
 		 SAXBuilder builder = new SAXBuilder();
-		    File xmlFile = new File( "C:\\Users\\gollo\\Desktop\\plantilla.xml" );
+		    File xmlFile = new File( "C:\\Users\\Flo\\Documents\\workspace\\PlantillaDS\\plantilla.xml" );
 		    try
 		    {
 		        //Se crea el documento a traves del archivo

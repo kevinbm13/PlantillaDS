@@ -11,15 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import entidades.Controlador;
 import entidades.Documento;
 import entidades.Seccion;
 
 
 
-public class pruebaServlet extends HttpServlet {
+public class agregarElementoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public pruebaServlet() {
+    public agregarElementoServlet() {
         super();
     }
 
@@ -29,18 +30,19 @@ public class pruebaServlet extends HttpServlet {
   
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Documento d=new Seccion("Plantilla");
+		String nombre = request.getParameter("nombre");
+		String vigencia = request.getParameter("vigencia");
+		String nombreSeccion = request.getParameter("nombreSec");
 		
-		String nombreSeccion = request.getParameter("nombreSeccion");
-		d.add(new Seccion(nombreSeccion));
-		d.incluir();
-		System.out.println("hola");
-		String result = "hola";
+		Controlador controlador = new Controlador();
+		controlador.crearEstructura();
+		controlador.crearElemento(nombreSeccion, nombre);
+		String result = "Elemento " + nombre + " agregado correctamente. Vigencia: " + vigencia;
 		
 		
 		response.setContentType("text/plain");  
 		response.setCharacterEncoding("UTF-8"); 
-		response.getWriter().write(result); 
+		response.getWriter().write(result);
 	}
 
 }

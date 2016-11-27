@@ -1,4 +1,4 @@
-package entidad;
+package entidades;
 
 public class Controlador {
 	private Documento documento;
@@ -15,10 +15,11 @@ public class Controlador {
 	public void crearSeccion(String idSeccion){
 		Documento nuevaSeccion=new Seccion(idSeccion);
 		documento.add(nuevaSeccion);	
+		documento.incluir();
 	}
 	
 	public void eliminarSeccion(String idSeccion){
-		documento.remove(idSeccion);
+		//documento.remove(idSeccion);
 		documento.incluir();
 	}
 	

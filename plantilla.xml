@@ -5,9 +5,9 @@
 
 
 <Plantilla>
-
+		
+		
 		<seccion name="Parte1">
-			
 			<seccion name="Datos Generales" >
 				<elemento name="Nombre Código">Nombre Código</elemento>
 				<elemento name="Tipo Curso">Tipo Curso</elemento>

@@ -8,13 +8,19 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<script src="dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 
 	<script>
         $(document).ready(function() {                        
             $('#agregarSeccion').click(function(event) {  
             	var nombre=$('#nombreSeccion').val();
-             	$.post('agregarSeccionServlet',{nombreSeccion:nombre},function(responseText) { 
-					alert(responseText);
+            	var vigencia=$('#vigenciaSeccion').val();
+             	$.post('agregarSeccionServlet',{nombreSeccion:nombre, vigencia:vigencia},function(responseText) { 
+             		swal({ 
+             			 title: "¡Exito!", 
+             			 text: responseText, 
+             			 type: "success"});
                 });
             });
         });
@@ -22,7 +28,10 @@
 	<script>
         $(document).ready(function() {                        
             $('#agregarElemento').click(function(event) {  
-             	$.post('pruebaServlet',{},function(responseText) { 
+            	var nombre=$('#nombreElemento').val();
+            	var vigencia=$('#vigenciaElemento').val();
+            	var nombreSec=$('#nombreSecElemento').val();
+             	$.post('agregarElementoServlet',{nombre:nombre, vigencia:vigencia, nombreSec:nombreSec},function(responseText) { 
 					alert(responseText);
                 });
             });
@@ -35,7 +44,7 @@
 </div>
 
 <ul>
-	<div align = "center"> <img src="http://repositoriotec.tec.ac.cr/themes/Mirage2//images/MarcaTECRGB.png" style="width:330px;250px;" > </div>
+	<div align = "center"> <img src="http://repositoriotec.tec.ac.cr/themes/Mirage2//images/MarcaTECRGB.png" style="width:100%;height:15%;" > </div>
 	<li><a href="admin.jsp" style="border-top: 5px solid black;"><span>Modificar Plantilla</span></a></li>
 	<li><a href="login.jsp"><span>Cerrar sesión</span></a></li>
 </ul>
@@ -43,50 +52,45 @@
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
 	<button class="accordion">Agregar Sección</button>
 	<div class="panel">
-		<form id="form1">
 		<label for="nombreSeccion">Nombre de la sección</label>
-		<input type="text" name="nombreSeccion">
+		<input type="text" id="nombreSeccion">
 	
 		<label for="vigenciaSeccion">Vigencia</label>
-		<input type="text" name="vigenciaSeccion">
+		<input type="text" id="vigenciaSeccion">
 		<input id="agregarSeccion" type="submit" value = "Agregar Sección">	
-		</form>
 	</div>
 
 	<button class="accordion">Agregar Elemento</button>
 	<div class="panel">
-		<form id="form2">
 		<label for="nombreElemento">Nombre del elemento</label>
-		<input type="text" name="nombreElemento">
+		<input type="text" id="nombreElemento">
+		
+		<label for="nombreSecElemento">Seccion a la que pertenece</label>
+		<input type="text" id="nombreSecElemento">
 	
 		<label for="vigenciaElemento">Vigencia</label>
-		<input type="text" name="vigenciaElemento">
+		<input type="text" id="vigenciaElemento">
 		<input name="agregarElemento" type="submit" value = "Agregar Elemento">	
-		</form>
 	</div>
 	
 	<button class="accordion">Eliminar Sección</button>
 	<div class="panel">
-		<form id="form3">
 		<label for="nombreSeccionEliminar">Nombre de la sección</label>
-		<input type="text" name="nombreSeccionEliminar">
+		<input type="text" id="nombreSeccionEliminar">
 	
 		<label for="vigenciaSeccionEliminar">Vigencia</label>
-		<input type="text" name="vigenciaSeccionEliminar">
+		<input type="text" id="vigenciaSeccionEliminar">
 		<input id="eliminarSeccion" type="submit" value = "Eliminar Sección">	
-		</form>
 	</div>
 	
 	<button class="accordion">Eliminar Elemento</button>
 	<div class="panel">
-		<form id="form4">
 		<label for="nombreElementoEliminar">Nombre del elemento</label>
-		<input type="text" name="nombreElementoEliminar">
+		<input type="text" id="nombreElementoEliminar">
 	
 		<label for="vigenciaElementoEliminar">Vigencia</label>
-		<input type="text" name="vigenciaElementoEliminar">
+		<input type="text" id="vigenciaElementoEliminar">
 		<input name="eliminarElemento" type="submit" value = "Eliminar Elemento">	
-		</form>
 	</div>
 </div>
 
