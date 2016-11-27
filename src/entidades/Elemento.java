@@ -1,35 +1,64 @@
-package entidades;
+package entidad;
+
+import java.util.List;
+
 
 public class Elemento extends Documento {
-	private String nombre;
+	private String id;
 	
-	public Elemento(String nombre){
+	public Elemento(String id){
 	
-		this.nombre=nombre;
-	}
-	@Override
-	public void add(Documento documento) {
-		// TODO Auto-generated method stub
-		//No se implementa
+		this.id=id;
 	}
 
-	@Override
-	public void remove(Documento employee) {
-		// TODO Auto-generated method stub
-		//No se implementa
-	}
 
 	@Override
-	public void getChild(int i) {
-		// TODO Auto-generated method stub
-		//No se implementa
+	public void remove(String idElemento) {
+		
 	}
+
+public void obtenerElemento(String idElemento){
+	
+}
 
 	@Override
 	public void incluir() {
 		//Guardar en base
-		System.out.println(nombre);
+		System.out.println(id);
 	}
+
+	@Override
+	public String getId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+	@Override
+	public void setId(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public List getListaSeccion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void setListaSeccion(List<Documento>lista) {
+		// TODO Auto-generated method stub
+	
+	}
+	@Override
+	public void getChild(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void add(Documento d) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 	

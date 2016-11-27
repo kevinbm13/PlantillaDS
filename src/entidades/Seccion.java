@@ -1,47 +1,92 @@
-package entidades;
+package entidad;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 public class Seccion extends Documento {
 private List<Documento> listaSeccion;
-private String nombre;
-	 public Seccion(String nombre){
+private String id;
+
+
+
+	 public String getId() {
+	return id;
+}
+
+public void setId(String id) {
+	this.id = id;
+}
+
+	public Seccion(String string){
 		listaSeccion= new ArrayList<Documento>();
-		this.nombre=nombre;
+		this.id=string;
 	 }
 	
 	 @Override
 	public void add(Documento documento) {
 		// TODO Auto-generated method stub
-		
 		listaSeccion.add(documento);
 	}
 	@Override
-	public void remove(Documento documento) {
-		// TODO Auto-generated method stub
-		listaSeccion.remove(documento);
+	public void remove(String idSeccion) {
+
+		for(int x=0;x<listaSeccion.size();x++){
+			if(listaSeccion.get(x).getId().equals(idSeccion)){
+				listaSeccion.remove(x);
+			}
+			
+			else{
+			
+				listaSeccion.get(x).getChild(idSeccion);
+			}
+			
+			
+		}
+			
 	}
-	@Override
-	//Obtener hijos(Elemento en lista)
-	public void getChild(int i) {
+	
+public void getChild(String id){
+		
+		for(int x=0;x<listaSeccion.size();x++){
+		
+			if(listaSeccion.get(x).getId().equals(id)){
+				System.out.println("entre");
+				listaSeccion.remove(x);
+			}
+			
+			listaSeccion.get(x).getChild(id);
+		}
 		
 		
 	}
+	public List<Documento> getListaSeccion() {
+		return listaSeccion;
+	}
+
+	public void setListaSeccion(List<Documento> listaSeccion) {
+		this.listaSeccion = listaSeccion;
+	}
+
+	
+
+	
+	
 	@Override
 	//ModificarContenido
 	public void incluir() {
-		System.out.println(nombre);
-		//Guardar en base
+		System.out.println(id);
+	
 		for (Documento seccion : listaSeccion) {
-			//Guardar en base
+			
 			seccion.incluir();
 			
 		}
 		}
-			
-		}
+
+	
+	
+	}
+		
 		
 	
 	
