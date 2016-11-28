@@ -14,10 +14,21 @@ import org.jdom2.JDOMException;    // |/ JDOM
 import org.jdom2.input.SAXBuilder;
 
 public class LectorXml {
-	
-	public Documento leer(Documento documento){
+	String nombre=null;
+	public String getNombre() {
+		return nombre;
+	}
+//----------------------------------------------------------------------------------
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+//---------------------------------------------------------------------------------
+
+	public Documento leer(Documento documento,String nombrePlantilla){
 		 SAXBuilder builder = new SAXBuilder();
-		    File xmlFile = new File( "C:\\Users\\gollo\\Desktop\\plantilla.xml" );
+		 File fichero = new File(nombrePlantilla);
+		    File xmlFile = new File( fichero.getAbsolutePath() );
+		    nombre=fichero.getAbsolutePath();
 		    try
 		    {
 		        //Se crea el documento a traves del archivo

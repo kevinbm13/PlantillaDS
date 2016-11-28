@@ -2,6 +2,7 @@ package entidad;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,9 +38,10 @@ public class Controlador {
 		documento.add(d);	
 	}
 //-----------------------------------------------------------------------------------------------------------------
-	public void crearElemento(String idElemento,String idNombre){
+	public void crearElemento(String idElemento,String idNombre) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException{
 		Documento d=new Elemento(idElemento,idNombre);
 		documento.add(d);
+		crearArchivoXml(lector.getNombre(), documento);
 		
 	
 	}
@@ -51,10 +53,12 @@ public class Controlador {
 	
 //-----------------------------------------------------------------------------------------------------------------
 	
-	public void crearEstructura(){
+	public void crearEstructura(String nombrePlantilla){
 		
-		lector.leer(documento);
+		lector.leer(documento,nombrePlantilla);
 	}
+	
+	
 //--------------------------------------------------------------------------------------------
 //ModificaAspectosOperativos(Lista tiene lo que escribio el usuario)
 	public void modificarAspectosOperativos(List<String>p){
@@ -92,6 +96,52 @@ public class Controlador {
 		File directorio=new File("C:\\Users\\gollo\\Desktop\\Juan"); 
 		directorio.mkdir(); 
 		;
+		
+	}
+	
+//-----------------------------------------------------------------------------------------------------------
+	public List<Documento> obtenerElementos(){
+		List<Documento>seccion=documento.getListaSeccion();
+		List<Documento>seccionNueva=new ArrayList<Documento>();
+		for(int x=0;x<seccion.size();x++){
+			if(seccion.get(x).getListaSeccion()==null){
+				System.out.println(seccion.get(x).getNombre());
+				seccionNueva.add(seccion.get(x));
+				obtenerHijoSeccion(seccion.get(x),seccionNueva);
+			}
+			seccionNueva.add(seccion.get(x));
+		}
+		return seccion;
+		
+	}
+//-------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------
+	public List<Documento> obtenerSecciones(){
+		List<Documento>seccion=documento.getListaSeccion();
+		List<Documento>seccionNueva=new ArrayList<Documento>();
+		for(int x=0;x<seccion.size();x++){
+			if(seccion.get(x).getListaSeccion()!=null){
+				System.out.println(seccion.get(x).getNombre());
+				seccionNueva.add(seccion.get(x));
+				obtenerHijoSeccion(seccion.get(x),seccionNueva);
+			}
+			System.out.println(seccion.get(x).getNombre());
+			seccionNueva.add(seccion.get(x));
+		}
+		return seccion;
+		
+	}
+	
+//---------------------------------------------------------------------------------------------
+	public void obtenerHijoSeccion(Documento d,List<Documento>seccionNueva){
+		List<Documento>seccion=d.getListaSeccion();
+		for(int x=0;x<seccion.size();x++){
+			if(seccion.get(x).getListaSeccion()!=null){
+				System.out.println(seccion.get(x).getNombre());
+				seccionNueva.add(seccion.get(x));
+				obtenerHijoSeccion(seccion.get(x),seccionNueva);
+			}
+		}
 		
 	}
 //--------------------------------------------------------------------------------------------------------

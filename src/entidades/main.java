@@ -13,8 +13,6 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 public class main {
 	public static void main(String[] args) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException, IOException{		
 		Controlador c= new Controlador();
-		c.crearEstructura();
-	
-		c.escribirPdfPlantilla("C:\\Users\\gollo\\Desktop\\juan.pdf");
+		
 }
 }

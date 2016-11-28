@@ -19,9 +19,9 @@ public class PdfReader {
 			contentStream.newLineAtOffset(25,700);
 			
 			contentStream.setFont( PDType1Font.TIMES_ROMAN, 16);
-			contentStream.setLeading(x);
+			contentStream.setLeading(10.4);
 			contentStream.newLine();
-			contentStream.showText(text1);
+			contentStream.drawString(text1);
 			contentStream.newLine(); 
 			contentStream. showText(text2);
 			contentStream.newLine(); 
