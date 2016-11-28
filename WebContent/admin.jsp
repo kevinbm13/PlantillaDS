@@ -18,7 +18,11 @@
             	var nombre=$('#nombreSeccion').val();
             	var vigencia=$('#vigenciaSeccion').val();
              	$.post('agregarSeccionServlet',{id:id, nombreSeccion:nombre, vigencia:vigencia},function(responseText) { 
-             		swal("¡Exito!",responseText,"success");
+             		swal({title: "¡Exito!", text: responseText, type: "success"},
+             			   function(){ 
+             			       location.reload();
+             			   }
+             		);
                 });
             });
         });
@@ -31,7 +35,11 @@
             	var vigencia=$('#vigenciaElemento').val();
             	var nombreSec=$('#nombreSecElemento').val();
              	$.post('agregarElementoServlet',{id:id, nombre:nombre, vigencia:vigencia, nombreSec:nombreSec},function(responseText) { 
-             		swal("¡Exito!",responseText,"success");
+             		swal({title: "¡Exito!", text: responseText, type: "success"},
+              			   function(){ 
+              			       location.reload();
+              			   }
+              		);
                 });
             });
         });
@@ -42,7 +50,11 @@
             	var id=$('#idSeccionEliminar').val();
             	var vigencia=$('#vigenciaSeccionEliminar').val();
              	$.post('eliminarSeccionServlet',{id:id, vigencia:vigencia},function(responseText) { 
-             		swal("¡Exito!",responseText,"success");
+             		swal({title: "¡Exito!", text: responseText, type: "success"},
+              			   function(){ 
+              			       location.reload();
+              			   }
+              		);
                 });
             });
         });
@@ -53,7 +65,11 @@
             	var id=$('#idElementoEliminar').val();
             	var vigencia=$('#vigenciaElementoEliminar').val();
              	$.post('eliminarElementoServlet',{id:id, vigencia:vigencia},function(responseText) { 
-             		swal("¡Exito!",responseText,"success");
+             		swal({title: "¡Exito!", text: responseText, type: "success"},
+              			   function(){ 
+              			       location.reload();
+              			   }
+              		);
                 });
             });
         });
