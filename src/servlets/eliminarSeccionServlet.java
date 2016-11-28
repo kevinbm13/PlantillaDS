@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import entidad.Controlador;
 
@@ -27,8 +30,13 @@ public class eliminarSeccionServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		
 		Controlador controlador = new Controlador();
-		controlador.crearEstructura();
-		//controlador.eliminar(idSeccion);
+		controlador.crearEstructura("plantilla.xml");
+		try {
+			controlador.eliminar(id);
+		} catch (ParserConfigurationException | TransformerFactoryConfigurationError | TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String result = "Seccion " + id + " eliminada correctamente.\nVigencia: " + vigencia;
 	
 		

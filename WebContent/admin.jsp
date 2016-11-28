@@ -65,7 +65,7 @@
 </div>
 
 <ul>
-	<li> <img src="http://repositoriotec.tec.ac.cr/themes/Mirage2//images/MarcaTECRGB.png" style="width:100%;height:15%;" > </li>
+	<li> <img src="http://repositoriotec.tec.ac.cr/themes/Mirage2//images/MarcaTECRGB.png" style="width:100%;" > </li>
 	<li><a href="admin.jsp" style="border-top: 5px solid black;"><span>Modificar Plantilla</span></a></li>
 	<li><a href="login.jsp"><span>Cerrar sesión</span></a></li>
 </ul>
@@ -94,9 +94,10 @@
 		
 		<label for="nombreSecElemento">Seccion a la que pertenece</label>
 		<select id="nombreSecElemento">
-		<% Controlador controlador = new Controlador();controlador.crearEstructura();%>
-		<% for(int count=0; count<controlador.listaSecciones().size(); count++){ %>
-    	<option><%= controlador.listaSecciones().get(count).getId() %></option>  
+		<% Controlador controlador = new Controlador();controlador.crearEstructura("plantilla.xml");%>
+		<% for(int count=0; count<controlador.obtenerSecciones().size(); count++){ %>
+    	<option value="<%= controlador.obtenerSecciones().get(count).getId() %>">
+    	<%= controlador.obtenerSecciones().get(count).getId() +". "+ controlador.obtenerSecciones().get(count).getNombre() %></option>  
 		<%} %>
 		</select>
 		<label for="vigenciaElemento">Vigencia</label>
@@ -107,7 +108,12 @@
 	<button class="accordion">Eliminar Sección</button>
 	<div class="panel">
 		<label for="idSeccionEliminar">ID de la sección</label>
-		<input type="text" id="idSeccionEliminar">
+		<select id="idSeccionEliminar">
+		<% for(int count=0; count<controlador.obtenerSecciones().size(); count++){ %>
+    	<option value="<%= controlador.obtenerSecciones().get(count).getId() %>">
+    	<%= controlador.obtenerSecciones().get(count).getId() +". "+ controlador.obtenerSecciones().get(count).getNombre() %></option>  
+		<%} %>
+		</select>
 	
 		<label for="vigenciaSeccionEliminar">Vigencia</label>
 		<input type="text" id="vigenciaSeccionEliminar">
@@ -117,8 +123,12 @@
 	<button class="accordion">Eliminar Elemento</button>
 	<div class="panel">
 		<label for="idElementoEliminar">ID del elemento</label>
-		<input type="text" id="idElementoEliminar">
-	
+		<select id="idElementoEliminar">
+		<% for(int count=0; count<controlador.obtenerElementos().size(); count++){ %>
+    	<option value="<%= controlador.obtenerElementos().get(count).getId() %>">
+    	<%= controlador.obtenerElementos().get(count).getId() +". "+ controlador.obtenerElementos().get(count).getNombre() %></option>  
+		<%} %>
+		</select>
 		<label for="vigenciaElementoEliminar">Vigencia</label>
 		<input type="text" id="vigenciaElementoEliminar">
 		<input id="eliminarElemento" type="submit" value = "Eliminar Elemento">	

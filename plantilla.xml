@@ -9,7 +9,7 @@
 		<seccion name="Parte1" id="1">
 			
 			<seccion name="Datos Generales" id="2" >
-				<elemento name="Nombre Código" id="3">Nombre Código</elemento>
+				<elemento name="Nombre Código" id="3">Nombre Có</elemento>
 				<elemento name="Tipo Curso" id="4">Tipo Curso</elemento>
 				<elemento name="Efectivo" id="5">Efectivo</elemento>
 			</seccion>

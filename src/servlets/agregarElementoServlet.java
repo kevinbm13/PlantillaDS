@@ -6,9 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import entidad.Controlador;
-
+ 
 
 
 public class agregarElementoServlet extends HttpServlet {
@@ -27,11 +30,17 @@ public class agregarElementoServlet extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String vigencia = request.getParameter("vigencia");
 		String nombreSeccion = request.getParameter("nombreSec");
+		String result = "Elemento " + nombre + " con el ID " + id + " agregado correctamente a la seccion "+ nombreSeccion + ". Vigencia: " + vigencia;
 		
 		Controlador controlador = new Controlador();
-		controlador.crearEstructura();
-		controlador.crearElemento(id, nombre);
-		String result = "Elemento " + nombre + " con el ID " + id + " agregado correctamente a la seccion "+ nombreSeccion + ". Vigencia: " + vigencia;
+		controlador.crearEstructura("plantilla.xml");
+		try {
+			controlador.crearElemento(id, nombre);
+		} catch (ParserConfigurationException | TransformerFactoryConfigurationError | TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			//result = "Error.";
+		}
 		
 		response.setContentType("text/plain");  
 		response.setCharacterEncoding("UTF-8"); 

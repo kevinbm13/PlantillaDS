@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import entidad.Controlador;
 
@@ -28,8 +31,13 @@ public class agregarSeccionServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		
 		Controlador controlador = new Controlador();
-		controlador.crearEstructura();
-		controlador.crearSeccion(id, nombreSeccion);
+		controlador.crearEstructura("plantilla.xml");
+		try {
+			controlador.crearSeccion(id, nombreSeccion);
+		} catch (ParserConfigurationException | TransformerFactoryConfigurationError | TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String result = "Seccion " + nombreSeccion + " con el ID " + id + " agregada correctamente.\nVigencia: " + vigencia;
 	
 		
