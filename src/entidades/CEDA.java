@@ -1,15 +1,16 @@
-package entidades;
+package entidad;
 
-public class CEDA extends Usuario {
+import java.util.List;
+
+public class  CEDA implements Usuario {
+	Documento d;
 	public CEDA(){
 		
 	}
-	
-	public void modificarPlantilla(){
-		
-	}
-	
-	public void crearPlantilla(){
+
+	@Override
+	public void modificarPlantilla(Documento documento,List<String>texto) {
+		// TODO Auto-generated method stub
 		
 	}
 }

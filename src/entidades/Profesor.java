@@ -1,12 +1,19 @@
-package entidades;
+package entidad;
 
-public class Profesor {
+import java.util.List;
+
+public class Profesor implements Usuario {
 
 	public Profesor(){
 		
 	}
 	
-	public void modificarPlantiilla(){
+
+
+	@Override
+	public void modificarPlantilla(Documento d, List<String> texto) {
+		// TODO Auto-generated method stub
+		d.incluir(texto);
 		
 	}
 	

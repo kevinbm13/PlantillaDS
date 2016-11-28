@@ -6,7 +6,7 @@ import java.util.List;
 public class Seccion extends Documento {
 private List<Documento> listaSeccion;
 private String id;
-
+private String nombre;
 private String contenido=null;
 
 	 public String getId() {
@@ -17,9 +17,10 @@ public void setId(String id) {
 	this.id = id;
 }
 
-	public Seccion(String string){
+	public Seccion(String string,String nombre){
 		listaSeccion= new ArrayList<Documento>();
 		this.id=string;
+		this.nombre=nombre;
 	 }
 	
 	 @Override
@@ -99,6 +100,18 @@ public void getChild(String id){
 
 	public void setContenido(String contenido) {
 		this.contenido = contenido;
+	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return nombre;
+	}
+
+	@Override
+	public void setNombre(String nombre) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

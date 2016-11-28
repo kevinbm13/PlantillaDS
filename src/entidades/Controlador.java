@@ -1,6 +1,7 @@
 package entidad;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,48 +26,57 @@ public class Controlador {
 	private Usuario usuario;
 	
 	public Controlador(){
-		documento=new Seccion("0");
+		documento=new Seccion("0","Plantilla");
 		lector=new LectorXml();
 		
 		
 	}
-//-----------------------------------------------------------------------------------------------------------
-	public void crearSeccion(String idSeccion){
-		Documento d=new Seccion(idSeccion);
+//---------------------------------------------------------------------------------------------------------------
+	public void crearSeccion(String idSeccion,String idNombre){
+		Documento d=new Seccion(idSeccion,idNombre);
 		documento.add(d);	
 	}
-//-------------------------------------------------------------------------------------------------------
-	public void crearElemento(String idElemento){
-		Documento d=new Elemento(idElemento);
+//-----------------------------------------------------------------------------------------------------------------
+	public void crearElemento(String idElemento,String idNombre){
+		Documento d=new Elemento(idElemento,idNombre);
 		documento.add(d);
 		
 	
 	}
-//----------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
 	public void eliminar(String idSeccion){
 		documento.remove(idSeccion);
 		
 	}
 	
-
+//-----------------------------------------------------------------------------------------------------------------
 	
 	public void crearEstructura(){
 		
 		lector.leer(documento);
-		
+	}
+//--------------------------------------------------------------------------------------------
+//ModificaAspectosOperativos(Lista tiene lo que escribio el usuario)
+	public void modificarAspectosOperativos(List<String>p){
+		usuario=new Profesor();
+		List<Documento>d=documento.getListaSeccion();
+		for(int x=1;x<d.size();x++){
+			
+			usuario.modificarPlantilla(d.get(x),p );
+		}
 		
 	}
-	//-------------------------------------------------------------------------------------
-	//Modificar Parte Aspectos Generales(Liista tiene lo que escribio el usuario,)
+//-------------------------------------------------------------------------------------
+//Modificar Parte Aspectos Generales(Liista tiene lo que escribio el usuario,)
 	public void modificarAspectosGenerales(List<String>texto){
 		usuario=new Gestor();
 		List<Documento>d=documento.getListaSeccion();
 		Documento c= d.get(0);
 		usuario.modificarPlantilla(c, texto);
 	}
-	//------------------------------------------------------------------------------------
-	//CrearPlantillas a partir de una existente Datos para hacer la ruta del fichero
-	//Datos para hacer el la direcciond del repositorio y la de las plantillas
+//------------------------------------------------------------------------------------
+//CrearPlantillas a partir de una existente Datos para hacer la ruta del fichero
+//Datos para hacer el la direcciond del repositorio y la de las plantillas
 	public void crearPlantillas(List<String>datos) throws CloneNotSupportedException, ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException{
 		String direccion=null;
 		Documento d=(Documento) documento.Clonar();
@@ -74,8 +84,8 @@ public class Controlador {
 		crearArchivoXml(direccion,d);
 		
 	}
-	//------------------------------------------------------------------------------------------------
-	//hace repositorio
+//------------------------------------------------------------------------------------------------
+//hace repositorio
 	
 	public void crearDirectorio(String dato) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException{
 		
@@ -84,8 +94,8 @@ public class Controlador {
 		;
 		
 	}
-	//--------------------------------------------------------------------------------------------------------
-	//Para craer el archivo con la estructura y ponerla en el repositorio
+//--------------------------------------------------------------------------------------------------------
+//Para craer el archivo con la estructura y ponerla en el repositorio
 	public void crearArchivoXml(String dato,Documento k) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException{
 		LectorXml xml=new LectorXml();
 		Document d=(Document) xml.crearArchivo();
@@ -94,6 +104,7 @@ public class Controlador {
 		d.appendChild(raiz);
 		crearTags(d,raiz,lista,"C:\\Users\\gollo\\Desktop\\Juan"+".xml");
 	}
+//Crea los TAGS para formar el xml
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 	public void crearTags(Document d,Element raiz,List<Documento>lista,String direccion) throws TransformerFactoryConfigurationError, TransformerException{
 		
@@ -103,13 +114,15 @@ public class Controlador {
 			if(lista.get(x).getListaSeccion()!=null){
 				Element seccion= d.createElement("Seccion");
 				seccion.setAttribute("id", lista.get(x).getId());
+				seccion.setAttribute("name", lista.get(x).getNombre());
 				raiz.appendChild(seccion);
 				crearTags(d,seccion,lista.get(x).getListaSeccion(),direccion);
 			}
 			else{
 				Element seccion= d.createElement("Elemento");
 				seccion.setAttribute("id", lista.get(x).getId());
-				 Text text = d.createTextNode("dta");
+				seccion.setAttribute("name", lista.get(x).getNombre());
+				 Text text = d.createTextNode(lista.get(x).getContenido());
 				 seccion.appendChild(text);
 
 				raiz.appendChild(seccion);
@@ -121,12 +134,36 @@ public class Controlador {
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.transform(source, result);
 	}
+//-----------------------------------------------------------------------------------------------------------
+//EscribirPDF
+	public void escribirPdfPlantilla(String direccion) throws IOException{
+		int linea1=10;
+		int linea2=50;
+		PdfReader escritor=new PdfReader();
+		List<Documento>lista=documento.getListaSeccion();
+		escritor.crearDocumentoPdf(direccion);
+		crearLineas(escritor,lista,direccion,linea1,linea2);
+	}
+		
+//---------------------------------
 
-		
-		
-		
-	
-		
+		public void crearLineas(PdfReader reader,List<Documento>lista,String direccion,int linea1,int linea2) throws IOException{
+			linea1=linea1+50;
+			linea2=linea2+200;
+			
+			for(int x=0;x<lista.size();x++){
+				
+				
+				if(lista.get(x).getListaSeccion()!=null){
+					System.out.println(lista.get(x).getNombre());
+					reader.escribiir(lista.get(x).getId(), lista.get(x).getNombre(), direccion,linea1,linea2);
+					crearLineas(reader,lista.get(x).getListaSeccion(),direccion,linea1,linea2);
+				}
+				else{
+					reader.escribiir(lista.get(x).getId(), lista.get(x).getNombre(), direccion,linea1,linea2);
+				}
+			}
+		}
 	
 	}
 	

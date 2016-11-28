@@ -6,9 +6,11 @@ import java.util.List;
 public class Elemento extends Documento {
 	private String id;
 	private String contenido;
-	public Elemento(String id){
+	private String nombre;
+	public Elemento(String id,String nombre){
 	
 		this.id=id;
+		this.nombre=nombre;
 	}
 
 
@@ -77,6 +79,24 @@ public void obtenerElemento(String idElemento){
 	public String getContenido() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void setContenido(String contenido) {
+		 this.contenido=contenido;
+	}
+
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return nombre;
+	}
+
+
+	@Override
+	public void setNombre(String nombre) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

@@ -1,34 +1,20 @@
-package entidades;
+package entidad;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+
+
 
 public class main {
-	public static void main(String[] args){
-		Documento d=new Seccion("Plantilla");
-		Documento d1=new Seccion("1 Aspectos Relativos");
-		Documento e= new Elemento("1.1 Datos Generales del Curso");
-		Documento e1=new Elemento("1.2 Descripción General");
-		Documento e2=new Elemento("1.3 Objetivos Generales y Específicos");
-		Documento e3=new Elemento("1.4 Contenido Temático");
-		
-		Documento d2 =new Seccion("2. Aspectos Operativos");
-		Documento f= new Elemento("2.1 Evaluación");
-		Documento f1=new Elemento("2.2 Bibliografía");
-		Documento f2=new Elemento("2.3 Datos del Profesor");
+	public static void main(String[] args) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException, IOException{		
+		Controlador c= new Controlador();
+		c.crearEstructura();
 	
-		d.add(d1);
-		d.add(d2);
-		
-		d1.add(e);
-		d1.add(e1);
-		d1.add(e2);
-		d1.add(e3);
-		
-		
-		d2.add(f);
-		d2.add(f1);
-		d2.add(f2);
-		
-		d.incluir();
-		
-		
-	}
+		c.escribirPdfPlantilla("C:\\Users\\gollo\\Desktop\\juan.pdf");
+}
 }

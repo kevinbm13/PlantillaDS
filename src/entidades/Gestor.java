@@ -12,8 +12,6 @@ public class Gestor implements Usuario {
 	@Override
 	public void modificarPlantilla(Documento documento ,List<String> texto) {
 		documento.incluir(texto);
-		
-
 }
 	
 

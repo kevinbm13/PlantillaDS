@@ -1,8 +1,9 @@
-package entidades;
+package entidad;
 
-public abstract class Usuario {
-	private String contraseña;
-	private String email;
+import java.util.List;
+
+public interface Usuario {
 	
-	public abstract void modificarPlantilla();
+	public abstract void modificarPlantilla(Documento d,List<String>texto);
+
 }

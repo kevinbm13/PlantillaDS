@@ -17,7 +17,7 @@ public class LectorXml {
 	
 	public Documento leer(Documento documento){
 		 SAXBuilder builder = new SAXBuilder();
-		    File xmlFile = new File( "C:\\Users\\gollo\\Desktop\\Juan.xml" );
+		    File xmlFile = new File( "C:\\Users\\gollo\\Desktop\\plantilla.xml" );
 		    try
 		    {
 		        //Se crea el documento a traves del archivo
@@ -44,12 +44,13 @@ public class LectorXml {
             List<Element> nodosHijosSecundarios=nodoHijo.getChildren();
             if(nodosHijosSecundarios.size()==0){
             	
-            	Documento d = new Elemento(nodoHijo.getAttributeValue("id"));
+            	Documento d = new Elemento(nodoHijo.getAttributeValue("id"),nodoHijo.getAttributeValue("name"));
+            	d.setContenido(nodoHijo.getText());
             	documento.add(d);
             
             }
             else{
-            	Documento seccion=new Seccion(nodoHijo.getAttributeValue("id"));
+            	Documento seccion=new Seccion(nodoHijo.getAttributeValue("id"),nodoHijo.getAttributeValue("name"));
             	documento.add(seccion);
             	crearEstructura(nodoHijo,seccion);
             }
