@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidades.Controlador;
+import entidad.Controlador;
 
 
 
@@ -19,19 +19,19 @@ public class agregarSeccionServlet extends HttpServlet {
     } 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doPost(request,response);
 	}
   
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombreSeccion = request.getParameter("nombreSeccion");
 		String vigencia = request.getParameter("vigencia");
+		String id = request.getParameter("id");
 		
 		Controlador controlador = new Controlador();
 		controlador.crearEstructura();
-		controlador.crearSeccion(nombreSeccion);
-		String result = "Seccion " + nombreSeccion + " agregada correctamente. Vigencia: " + vigencia;
-		
+		controlador.crearSeccion(id, nombreSeccion);
+		String result = "Seccion " + nombreSeccion + " con el ID " + id + " agregada correctamente.\nVigencia: " + vigencia;
+	
 		
 		response.setContentType("text/plain");  
 		response.setCharacterEncoding("UTF-8"); 

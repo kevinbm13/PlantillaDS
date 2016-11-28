@@ -5,24 +5,24 @@
 
 
 <Plantilla>
-		
-		
-		<seccion name="Parte1">
-			<seccion name="Datos Generales" >
-				<elemento name="Nombre Código">Nombre Código</elemento>
-				<elemento name="Tipo Curso">Tipo Curso</elemento>
-				<elemento name="Efectivo">Efectivo</elemento>
+
+		<seccion name="Parte1" id="1">
+			
+			<seccion name="Datos Generales" id="2" >
+				<elemento name="Nombre Código" id="3">Nombre Código</elemento>
+				<elemento name="Tipo Curso" id="4">Tipo Curso</elemento>
+				<elemento name="Efectivo" id="5">Efectivo</elemento>
 			</seccion>
-			<elemento name="Descripcion">Descripción General</elemento>
-			<elemento name="Objetivos">Objetivos Genereales</elemento>
-			<elemento name="Contenido">Contenido</elemento>
+			<elemento name="Descripcion" id="6">Descripción General</elemento>
+			<elemento name="Objetivos" id="7" >Objetivos Genereales</elemento>
+			<elemento name="Contenido" id="8">Contenido</elemento>
 		</seccion>
 		
-		<seccion name="Parte2">
-			<elemento name="Metodología">Metodología</elemento>
-			<elemento name="Evaluacion">Evaluación</elemento>
-			<elemento name="Bibliografía">Bibliografía</elemento>
-			<elemento name="Datos del Profesor">Datos del Profesor</elemento>
+		<seccion name="Parte2" id="9">
+			<elemento name="Metodología" id ="10">Metodología</elemento>
+			<elemento name="Evaluacion" id="11">Evaluación</elemento>
+			<elemento name="Bibliografía" id="12">Bibliografía</elemento>
+			<elemento name="Datos del Profesor" id="13">Datos del Profesor</elemento>
 		</seccion>
 	
 </Plantilla>

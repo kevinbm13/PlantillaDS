@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="entidad.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,14 +13,12 @@
 
 	<script>
         $(document).ready(function() {                        
-            $('#agregarSeccion').click(function(event) {  
+            $('#agregarSeccion').click(function(event) {
+            	var id=$('#idSeccion').val();
             	var nombre=$('#nombreSeccion').val();
             	var vigencia=$('#vigenciaSeccion').val();
-             	$.post('agregarSeccionServlet',{nombreSeccion:nombre, vigencia:vigencia},function(responseText) { 
-             		swal({ 
-             			 title: "¡Exito!", 
-             			 text: responseText, 
-             			 type: "success"});
+             	$.post('agregarSeccionServlet',{id:id, nombreSeccion:nombre, vigencia:vigencia},function(responseText) { 
+             		swal("¡Exito!",responseText,"success");
                 });
             });
         });
@@ -28,11 +26,34 @@
 	<script>
         $(document).ready(function() {                        
             $('#agregarElemento').click(function(event) {  
+            	var id=$('#idElemento').val();
             	var nombre=$('#nombreElemento').val();
             	var vigencia=$('#vigenciaElemento').val();
             	var nombreSec=$('#nombreSecElemento').val();
-             	$.post('agregarElementoServlet',{nombre:nombre, vigencia:vigencia, nombreSec:nombreSec},function(responseText) { 
-					alert(responseText);
+             	$.post('agregarElementoServlet',{id:id, nombre:nombre, vigencia:vigencia, nombreSec:nombreSec},function(responseText) { 
+             		swal("¡Exito!",responseText,"success");
+                });
+            });
+        });
+	</script>
+	<script>
+        $(document).ready(function() {                        
+            $('#eliminarSeccion').click(function(event) {
+            	var id=$('#idSeccionEliminar').val();
+            	var vigencia=$('#vigenciaSeccionEliminar').val();
+             	$.post('eliminarSeccionServlet',{id:id, vigencia:vigencia},function(responseText) { 
+             		swal("¡Exito!",responseText,"success");
+                });
+            });
+        });
+	</script>
+	<script>
+        $(document).ready(function() {                        
+            $('#eliminarElemento').click(function(event) {  
+            	var id=$('#idElementoEliminar').val();
+            	var vigencia=$('#vigenciaElementoEliminar').val();
+             	$.post('eliminarElementoServlet',{id:id, vigencia:vigencia},function(responseText) { 
+             		swal("¡Exito!",responseText,"success");
                 });
             });
         });
@@ -44,7 +65,7 @@
 </div>
 
 <ul>
-	<div align = "center"> <img src="http://repositoriotec.tec.ac.cr/themes/Mirage2//images/MarcaTECRGB.png" style="width:100%;height:15%;" > </div>
+	<li> <img src="http://repositoriotec.tec.ac.cr/themes/Mirage2//images/MarcaTECRGB.png" style="width:100%;height:15%;" > </li>
 	<li><a href="admin.jsp" style="border-top: 5px solid black;"><span>Modificar Plantilla</span></a></li>
 	<li><a href="login.jsp"><span>Cerrar sesión</span></a></li>
 </ul>
@@ -52,6 +73,9 @@
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
 	<button class="accordion">Agregar Sección</button>
 	<div class="panel">
+		<label for="idSeccion">ID de la sección</label>
+		<input type="text" id="idSeccion">
+		
 		<label for="nombreSeccion">Nombre de la sección</label>
 		<input type="text" id="nombreSeccion">
 	
@@ -62,21 +86,28 @@
 
 	<button class="accordion">Agregar Elemento</button>
 	<div class="panel">
+		<label for="idElemento">ID del elemento</label>
+		<input type="text" id="idElemento">
+		
 		<label for="nombreElemento">Nombre del elemento</label>
 		<input type="text" id="nombreElemento">
 		
 		<label for="nombreSecElemento">Seccion a la que pertenece</label>
-		<input type="text" id="nombreSecElemento">
-	
+		<select id="nombreSecElemento">
+		<% Controlador controlador = new Controlador();controlador.crearEstructura();%>
+		<% for(int count=0; count<controlador.listaSecciones().size(); count++){ %>
+    	<option><%= controlador.listaSecciones().get(count).getId() %></option>  
+		<%} %>
+		</select>
 		<label for="vigenciaElemento">Vigencia</label>
 		<input type="text" id="vigenciaElemento">
-		<input name="agregarElemento" type="submit" value = "Agregar Elemento">	
+		<input id="agregarElemento" type="submit" value = "Agregar Elemento">	
 	</div>
 	
 	<button class="accordion">Eliminar Sección</button>
 	<div class="panel">
-		<label for="nombreSeccionEliminar">Nombre de la sección</label>
-		<input type="text" id="nombreSeccionEliminar">
+		<label for="idSeccionEliminar">ID de la sección</label>
+		<input type="text" id="idSeccionEliminar">
 	
 		<label for="vigenciaSeccionEliminar">Vigencia</label>
 		<input type="text" id="vigenciaSeccionEliminar">
@@ -85,16 +116,14 @@
 	
 	<button class="accordion">Eliminar Elemento</button>
 	<div class="panel">
-		<label for="nombreElementoEliminar">Nombre del elemento</label>
-		<input type="text" id="nombreElementoEliminar">
+		<label for="idElementoEliminar">ID del elemento</label>
+		<input type="text" id="idElementoEliminar">
 	
 		<label for="vigenciaElementoEliminar">Vigencia</label>
 		<input type="text" id="vigenciaElementoEliminar">
-		<input name="eliminarElemento" type="submit" value = "Eliminar Elemento">	
+		<input id="eliminarElemento" type="submit" value = "Eliminar Elemento">	
 	</div>
 </div>
-
-
 
 
 <script>

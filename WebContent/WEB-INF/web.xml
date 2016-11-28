@@ -10,6 +10,15 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
+    <servlet-name>agregarElementoServlet</servlet-name>
+    <servlet-class>servlets.agregarElementoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>agregarElementoServlet</servlet-name>
+    <url-pattern>/agregarElementoServlet/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>agregarSeccionServlet</servlet-name>
     <servlet-class>servlets.agregarSeccionServlet</servlet-class>
   </servlet>
@@ -17,12 +26,22 @@
     <servlet-name>agregarSeccionServlet</servlet-name>
     <url-pattern>/agregarSeccionServlet/*</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>pruebaServlet</servlet-name>
-    <servlet-class>servlets.pruebaServlet</servlet-class>
+    <servlet-name>eliminarSeccionServlet</servlet-name>
+    <servlet-class>servlets.eliminarSeccionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>pruebaServlet</servlet-name>
-    <url-pattern>/pruebaServlet/*</url-pattern>
+    <servlet-name>eliminarSeccionServlet</servlet-name>
+    <url-pattern>/eliminarSeccionServlet/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>eliminarElementoServlet</servlet-name>
+    <servlet-class>servlets.eliminarElementoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>eliminarElementoServlet</servlet-name>
+    <url-pattern>/eliminarElementoServlet/*</url-pattern>
   </servlet-mapping>
 </web-app>
