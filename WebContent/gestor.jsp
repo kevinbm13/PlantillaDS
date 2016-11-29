@@ -29,12 +29,12 @@
 	<div class="panel">
 		
 		<% Controlador controlador = new Controlador();controlador.crearEstructura("plantilla.xml");%>
-		<% for(int count=0; count<controlador.obtenerElementos().size(); count++){ %>
-		<label for="<%= controlador.obtenerElementos().get(count).getId() %>">
-		<%= controlador.obtenerElementos().get(count).getNombre() %></label>
-    	<input type="text" id="<%= controlador.obtenerElementos().get(count).getId() %>
-    	" value="<%= controlador.obtenerElementos().get(count).getContenido() %>">   
-		<%} %>
+		<% for(int count=0; count<controlador.obtenerElementosFijos().size(); count++){ %>
+		<label for="<%= controlador.obtenerElementosFijos().get(count).getId() %>">
+		<%= controlador.obtenerElementosFijos().get(count).getNombre() %></label>
+    	<input type="text" id="<%= controlador.obtenerElementosFijos().get(count).getId() %>" 
+    	value="<%= controlador.obtenerElementosFijos().get(count).getContenido() %>">   
+		<%} %> 
 
 		<input id="modificarPlantilla" type="submit" value = "Modificar Plantilla">	
 	</div>

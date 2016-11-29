@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="entidad.*"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -29,11 +29,11 @@
 	<div class="panel">
 		
 		<% Controlador controlador = new Controlador();controlador.crearEstructura("plantilla.xml");%>
-		<% for(int count=0; count<controlador.obtenerElementos().size(); count++){ %>
-		<label for="<%= controlador.obtenerElementos().get(count).getId() %>">
-		<%= controlador.obtenerElementos().get(count).getNombre() %></label>
-    	<input type="text" id="<%= controlador.obtenerElementos().get(count).getId() %>
-    	" value="<%= controlador.obtenerElementos().get(count).getNombre() %>">   
+		<% for(int count=0; count<controlador.obtenerElementosVariables().size(); count++){ %>
+		<label for="<%= controlador.obtenerElementosVariables().get(count).getId() %>">
+		<%= controlador.obtenerElementosVariables().get(count).getNombre() %></label>
+    	<input type="text" id="<%= controlador.obtenerElementosVariables().get(count).getId() %>
+    	" value="<%= controlador.obtenerElementosVariables().get(count).getNombre() %>">   
 		<%} %>
 
 		<input id="llenarPlantilla" type="submit" value = "Llenar Plantilla">	
