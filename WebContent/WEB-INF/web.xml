@@ -17,7 +17,6 @@
     <servlet-name>agregarElementoServlet</servlet-name>
     <url-pattern>/agregarElementoServlet/*</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>agregarSeccionServlet</servlet-name>
     <servlet-class>servlets.agregarSeccionServlet</servlet-class>
@@ -26,7 +25,6 @@
     <servlet-name>agregarSeccionServlet</servlet-name>
     <url-pattern>/agregarSeccionServlet/*</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>eliminarSeccionServlet</servlet-name>
     <servlet-class>servlets.eliminarSeccionServlet</servlet-class>
@@ -35,7 +33,6 @@
     <servlet-name>eliminarSeccionServlet</servlet-name>
     <url-pattern>/eliminarSeccionServlet/*</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>eliminarElementoServlet</servlet-name>
     <servlet-class>servlets.eliminarElementoServlet</servlet-class>
@@ -43,5 +40,13 @@
   <servlet-mapping>
     <servlet-name>eliminarElementoServlet</servlet-name>
     <url-pattern>/eliminarElementoServlet/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>servlets.loginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/loginServlet/*</url-pattern>
   </servlet-mapping>
 </web-app>

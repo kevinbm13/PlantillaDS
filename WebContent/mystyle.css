@@ -155,3 +155,4 @@ label {
     outline: none;
     font-size: 18px;
 }
+footer, header { display: block; }

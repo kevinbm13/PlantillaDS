@@ -35,7 +35,7 @@ public class agregarElementoServlet extends HttpServlet {
 		Controlador controlador = new Controlador();
 		controlador.crearEstructura("plantilla.xml");
 		try {
-			controlador.crearElemento(id, nombre);
+			controlador.crearElemento(id, nombre, nombreSeccion);
 		} catch (ParserConfigurationException | TransformerFactoryConfigurationError | TransformerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
