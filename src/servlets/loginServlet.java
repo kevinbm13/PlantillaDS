@@ -28,14 +28,12 @@ public class loginServlet extends HttpServlet {
 		String tipo = request.getParameter("tipo");
 		String result = "";
 		Controlador controlador = new Controlador();
-		controlador.crearEstructura("plantilla.xml");
 		if(controlador.autenticar(username, pass, tipo)){
-			result = tipo;
+			result = username + ", " + tipo;
 		}
 		else{
 			result = "Datos invalidos.";
 		}
-		
 		response.setContentType("text/plain");  
 		response.setCharacterEncoding("UTF-8"); 
 		response.getWriter().write(result);
