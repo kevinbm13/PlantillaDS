@@ -15,35 +15,34 @@
             	var pass=$('#password').val();
             	var tipo=$('#tipo').val();
              	$.post('loginServlet',{username:username, pass:pass, tipo:tipo},function(responseText) { 
-             		if(response.equals("CEDA")){
-             			swal({title: "¡Exito!", text: responseText, type: "success"},
+             		if(response.equal("Datos invalidos.")){
+             			swal({title: "ERROR", text: responseText, type: "error"},
                  				function(){
-             						window.location.replace("admin.jsp");
+             						location.href("http://localhost:8080/PlantillaDS/login.jsp");
+                 				}
+                  		);
+             		}
+             		else if(tipo.equals("CEDA")){
+             			swal({title: "¡Bienvenido!", text: responseText, type: "success"},
+                 				function(){
+ 									location.href("http://localhost:8080/PlantillaDS/login.jsp");
                  				}
                   		);
  					}
- 					else if(response.equals("Gestor")){
- 						swal({title: "¡Exito!", text: responseText, type: "success"},
+ 					else if(tipo.equals("Gestor")){
+ 						swal({title: "¡Bienvenido!", text: responseText, type: "success"},
                  				function(){
-             						window.location.replace("gestor.jsp");
+ 									location.href("http://localhost:8080/PlantillaDS/login.jsp");
                  				}
                   		);
  					}
- 					else if(response.equals("Profesor")){
- 						swal({title: "¡Exito!", text: responseText, type: "success"},
+ 					else if(tipo.equals("Profesor")){
+ 						swal({title: "¡Bienvenido!", text: responseText, type: "success"},
                  				function(){
-             						window.location.replace("profe.jsp");
+ 									location.href("http://localhost:8080/PlantillaDS/login.jsp");
                  				}
                   		);
- 					}else{
- 						swal({title: "ERROR", text: responseText, type: "error"},
-                 				function(){
- 									location.reload();
-                 				}
-                  		);
- 						
  					}
-             		
                 });
             });
         });
