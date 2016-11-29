@@ -26,7 +26,7 @@ public class loginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String pass = request.getParameter("pass");
 		String tipo = request.getParameter("tipo");
-		String result = "";
+		String result = username + ", " + tipo;
 		Controlador controlador = new Controlador();
 		if(controlador.autenticar(username, pass, tipo)){
 			result = username + ", " + tipo;

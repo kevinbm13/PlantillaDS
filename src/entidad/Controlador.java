@@ -130,6 +130,40 @@ public class Controlador {
 	}
 	
 //-----------------------------------------------------------------------------------------------------------
+	public List<Documento> obtenerElementosFijos(){
+		List<Documento>seccion=documento.getListaSeccion();
+		List<Documento>seccionNueva=new ArrayList<Documento>();
+		for(int x=0;x<seccion.size();x++){
+			if(seccion.get(x).getListaSeccion()!=null){
+				if(seccion.get(x).getId().equals("1"))
+					obtenerHijoElemento(seccion.get(x),seccionNueva);
+			}
+			else{
+				
+				seccionNueva.add(seccion.get(x));
+			}
+			
+		}
+		return seccionNueva;
+	}
+	//-----------------------------------------------------------------------------------------------------------
+	public List<Documento> obtenerElementosVariables(){
+			List<Documento>seccion=documento.getListaSeccion();
+			List<Documento>seccionNueva=new ArrayList<Documento>();
+			for(int x=0;x<seccion.size();x++){
+				if(seccion.get(x).getListaSeccion()!=null){
+					if(!seccion.get(x).getId().equals("1"))
+						obtenerHijoElemento(seccion.get(x),seccionNueva);
+				}
+				else{
+					
+					seccionNueva.add(seccion.get(x));
+				}
+				
+			}
+			return seccionNueva;
+		}
+//-------------------------------------------------------------------------------------------------------
 	public List<Documento> obtenerElementos(){
 		List<Documento>seccion=documento.getListaSeccion();
 		List<Documento>seccionNueva=new ArrayList<Documento>();
@@ -149,7 +183,6 @@ public class Controlador {
 		return seccionNueva;
 		
 	}
-//-------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------
 	public List<Documento> obtenerSecciones(){
 		List<Documento>seccion=documento.getListaSeccion();

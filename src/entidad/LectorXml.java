@@ -28,7 +28,7 @@ public class LectorXml {
 	public List<String> obtenerUsuarios(String nombre){
 		List<String> datos = new ArrayList<String>();
 		SAXBuilder builder = new SAXBuilder();
-	    File xmlFile = new File( "C:\\Users\\Flo\\Documents\\PlantillaDS\\usuario.xml" );
+	    File xmlFile = new File( "C:\\Users\\Flo\\Documents\\workspace\\PlantillaDS\\usuario.xml" );
 	    //C:\\Users\\gollo\\Desktop\\eclipse\\usuario.xml
 	    //
 	    try
@@ -65,7 +65,7 @@ public class LectorXml {
 //--------------------------------------------------------------------
 	public Documento leer(Documento documento,String nombrePlantilla){
 		 SAXBuilder builder = new SAXBuilder();
-		 File fichero = new File(nombrePlantilla);
+		 File fichero = new File("C:\\Users\\Flo\\Documents\\workspace\\PlantillaDS\\" + nombrePlantilla);
 		    File xmlFile = new File( fichero.getAbsolutePath() );//
 		    nombre=fichero.getAbsolutePath();
 		    try
