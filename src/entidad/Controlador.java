@@ -91,22 +91,25 @@ public class Controlador {
 	
 //--------------------------------------------------------------------------------------------
 //ModificaAspectosOperativos(Lista tiene lo que escribio el usuario)
-	public void modificarAspectosOperativos(List<String>p){
+	public void modificarAspectosOperativos(List<String>p) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException{
 		usuario=new Profesor();
 		List<Documento>d=documento.getListaSeccion();
 		for(int x=1;x<d.size();x++){
 			
 			usuario.modificarPlantilla(d.get(x),p );
+			
 		}
+		crearArchivoXml(lector.getNombre(), documento);
 		
 	}
 //-------------------------------------------------------------------------------------
 //Modificar Parte Aspectos Generales(Liista tiene lo que escribio el usuario,)
-	public void modificarAspectosGenerales(List<String>texto){
+	public void modificarAspectosGenerales(List<String>texto) throws ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException{
 		usuario=new Gestor();
 		List<Documento>d=documento.getListaSeccion();
 		Documento c= d.get(0);
 		usuario.modificarPlantilla(c, texto);
+		crearArchivoXml(lector.getNombre(), documento);
 	}
 //------------------------------------------------------------------------------------
 //CrearPlantillas a partir de una existente Datos para hacer la ruta del fichero
