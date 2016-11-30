@@ -27,16 +27,18 @@
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
 	<button class="accordion">Modificar Aspectos Operativos</button>
 	<div class="panel">
-		
+		<form action="profesorServlet" method="post">
 		<% Controlador controlador = new Controlador();controlador.crearEstructura("plantilla.xml");%>
 		<% for(int count=0; count<controlador.obtenerElementosVariables().size(); count++){ %>
 		<label for="<%= controlador.obtenerElementosVariables().get(count).getId() %>">
 		<%= controlador.obtenerElementosVariables().get(count).getNombre() %></label>
-    	<input type="text" id="<%= controlador.obtenerElementosVariables().get(count).getId() %>
-    	" value="<%= controlador.obtenerElementosVariables().get(count).getNombre() %>">   
+    	<input type="text" id="<%= controlador.obtenerElementosVariables().get(count).getId() %>" 
+    	value="<%= controlador.obtenerElementosVariables().get(count).getNombre() %>"
+    	name="<%= controlador.obtenerElementosVariables().get(count).getContenido() %>">   
 		<%} %>
 
 		<input id="llenarPlantilla" type="submit" value = "Llenar Plantilla">	
+		</form>
 	</div>
 </div>
 

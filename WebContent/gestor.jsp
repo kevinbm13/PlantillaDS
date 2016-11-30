@@ -10,8 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
 	<script src="dist/sweetalert.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
-
-	
+	<script>
+	function mostrarMensaje() {
+		swal({title: "¡Exito!", text: "Descripcion modificada", type: "success"});
+	}
+	</script>
 </head>
 <body>
 <div class="w3-container" align = "center" style="background: #02003a;color:white;">
@@ -27,16 +30,18 @@
 <div style="margin-left:25%;padding:1px 16px;height:1000px;">
 	<button class="accordion">Modificar Aspectos Generales</button>
 	<div class="panel">
-		
+		<form action="gestorServlet" method="post">
 		<% Controlador controlador = new Controlador();controlador.crearEstructura("plantilla.xml");%>
 		<% for(int count=0; count<controlador.obtenerElementosFijos().size(); count++){ %>
 		<label for="<%= controlador.obtenerElementosFijos().get(count).getId() %>">
 		<%= controlador.obtenerElementosFijos().get(count).getNombre() %></label>
     	<input type="text" id="<%= controlador.obtenerElementosFijos().get(count).getId() %>" 
-    	value="<%= controlador.obtenerElementosFijos().get(count).getContenido() %>">   
-		<%} %> 
-
+    	value="<%= controlador.obtenerElementosFijos().get(count).getContenido() %>"
+    	name="<%= controlador.obtenerElementosFijos().get(count).getContenido() %>">   
+		<%} %>
+		
 		<input id="modificarPlantilla" type="submit" value = "Modificar Plantilla">	
+		</form>
 	</div>
 </div>
 
