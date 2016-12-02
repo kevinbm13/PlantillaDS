@@ -33,13 +33,13 @@
  					}else if(tipo == "Gestor"){
  						swal({title: "¡Bienvenido!", text: responseText, type: "success"},
                  				function(){
- 									location.href("http://localhost:8080/PlantillaDS/gestor.jsp");
+ 							window.location.href ="http://localhost:8080/PlantillaDS/gestor.jsp";
                  				}
                   		);
  					}else if(tipo == "Profesor"){
  						swal({title: "¡Bienvenido!", text: responseText, type: "success"},
                  				function(){
- 									location.href("http://localhost:8080/PlantillaDS/profe.jsp");
+ 							window.location.href ="http://localhost:8080/PlantillaDS/profe.jsp";
                  				}
                   		);
  					}else{

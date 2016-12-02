@@ -10,11 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
 	<script src="dist/sweetalert.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
-	<script>
-	function mostrarMensaje() {
-		swal({title: "¡Exito!", text: "Descripcion modificada", type: "success"});
-	}
-	</script>
+
 </head>
 <body>
 <div class="w3-container" align = "center" style="background: #02003a;color:white;">

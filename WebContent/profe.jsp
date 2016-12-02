@@ -33,7 +33,7 @@
 		<label for="<%= controlador.obtenerElementosVariables().get(count).getId() %>">
 		<%= controlador.obtenerElementosVariables().get(count).getNombre() %></label>
     	<input type="text" id="<%= controlador.obtenerElementosVariables().get(count).getId() %>" 
-    	value="<%= controlador.obtenerElementosVariables().get(count).getNombre() %>"
+    	value="<%= controlador.obtenerElementosVariables().get(count).getContenido() %>"
     	name="<%= controlador.obtenerElementosVariables().get(count).getContenido() %>">   
 		<%} %>
 
