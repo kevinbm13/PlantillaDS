@@ -53,9 +53,11 @@ public void getChild(String id){
 			if(listaSeccion.get(x).getId().equals(id)){
 				System.out.println("entre");
 				listaSeccion.remove(x);
+			}else{
+				listaSeccion.get(x).getChild(id);
 			}
 			
-			listaSeccion.get(x).getChild(id);
+			
 		}
 		
 		

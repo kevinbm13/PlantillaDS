@@ -95,9 +95,8 @@ public class Controlador {
 		usuario=new Profesor();
 		List<Documento>d=documento.getListaSeccion();
 		for(int x=1;x<d.size();x++){
-			
-			usuario.modificarPlantilla(d.get(x),p );
-			
+			Documento c= d.get(x);
+			usuario.modificarPlantilla(c,p );
 		}
 		crearArchivoXml(lector.getNombre(), documento);
 		
